@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="DataController">
+<head>
+  <title>Angular Filters</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center text-info">Hello, {{ name | uppercase }}!</h1>
+    <h2>My birthday is {{ birthdate | date:'fullDate' }}</h2>
+    <h2>I won {{ lotteryWinnings | currency }} in the lottery</h2>
+    <h2>Some stuff I like includes:</h2>
+    <ul>
+      <li ng-repeat="item in thingsILike | limitTo:3">
+        {{ item }}
+      </li>
+    </ul>
+    <h2>Haha, your name backward is {{ name | reverse | uppercase }}!</h2>
+
+    <h2>Pluralizer:</h2>
+    <h3>{{ octopus.length }} {{ octopus.length | pluralizer:'octopi':'octopus' }} spotted today</h3>
+
+    <h2>File Sizes</h2>
+    <ul ng-repeat="kilobytes in [123, 1024, 1536, 1048576, 1310720]">
+      {{ kilobytes | filesize: 2}}
+    </ul>
+
+    <h2>Primes:</h2>
+    <ul ng-repeat="num in [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17] | primes">
+      <li>{{num}}</li>
+    </ul>
+
+    <h2>AGO</h2>
+    {{ 'May 27 2014 00:17:00 GMT-0700' | ago}}
+    {{ 'Sep 27 2015 00:17:00 GMT-0700' | ago}}
+    {{ 'Feb 27 2016 00:17:00 GMT-0700' | ago}}
+    {{ 'May 22 2016 00:17:00 GMT-0700' | ago}}
+    {{ 'Sep 11 1985 20:20:00 GMT-0700' | ago}}
+    {{ 'May 27 2016 08:17:00 GMT-0700' | ago}}
+    {{ 'May 27 2016 09:30:00 GMT-0700' | ago}}
+
+    <h2>Places in a race:</h2>
+    <div ng-repeat="i in nums">
+      {{ i | nth }}
+    </div>
+  </div>
+</body>
+</html>
